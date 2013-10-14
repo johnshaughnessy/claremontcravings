@@ -2,7 +2,7 @@ Cravings::Application.configure do
   # Settings specified here will take precedence over those in config/application.rb.
 
   # Things to get bootstrap css to display properly on heroku, as found in
-  #
+  # http://stackoverflow.com/questions/16271696/cant-get-css-working-on-heroku-using-rails-4-with-bootstrap-saas-gem
   config.cache_classes = true
   config.serve_static_assets = true
   config.assets.compile = true

@@ -5,7 +5,12 @@
 / in the app/view/welcome folder also have the welcome.css.scss rules
 / apply to them.
 / 
+
+= javascript_include_tag "simplemodal", "data-turbolinks-track" => true 
+
 .container-narrow
+  
+  / Masthead and navigation
   .masthead
     %ul.nav.nav-pills.pull-right
       %li.active
@@ -16,27 +21,87 @@
         %a{href: "#"} Contact
     %h3.muted Claremont Cravings
   %hr/
+
+
   .jumbotron
     %h2 Fancy Village food. Lazy-college-student convenience.
-    %p.lead   You order the food you want from the village, and we bring it to you.
-    %a.btn.btn-large.btn-success{href: "#"} Order Now
+    %p.lead   You order the food you want from the village. We bring it back for you.
+    #basic-modal
+      %a.basic.btn.btn-large.btn-success{href:"#"} Order Now
+    / %a.basic.btn.btn-large.btn-success{href: "#" } Order Now
   %hr/
-  .row-fluid.marketing
-    .span6
-      %h4 Subheading
-      %p Donec id elit non mi porta gravida at eget metus. Maecenas faucibus mollis interdum.
-      %h4 Subheading
-      %p Morbi leo risus, porta ac consectetur ac, vestibulum at eros. Cras mattis consectetur purus sit amet fermentum.
-      %h4 Subheading
-      %p Maecenas sed diam eget risus varius blandit sit amet non magna.
-    .span6
-      %h4 Subheading
-      %p Donec id elit non mi porta gravida at eget metus. Maecenas faucibus mollis interdum.
-      %h4 Subheading
-      %p Morbi leo risus, porta ac consectetur ac, vestibulum at eros. Cras mattis consectetur purus sit amet fermentum.
-      %h4 Subheading
-      %p Maecenas sed diam eget risus varius blandit sit amet non magna.
-  %hr/
+
+  / modal content
+  #basic-modal-content
+    .row-fluid.center
+      .span4
+        = form_for :order, url: orders_path do |f|
+          %p
+            = f.label "name (first, last)"
+            %br
+            = f.text_field :full_name
+         
+          %p
+            = f.label :food
+            %br
+            = f.text_area :food
+         
+          %p
+            = f.submit
+      .span8.offset-4
+        %h1 Receipt area
+    %ul.thumbnails
+      %li.span4
+        .thumbnail
+          %img{alt: "ALT NAME", src: "http://placehold.it/320x200"}/
+          .caption
+            %h3 Header Name
+            %p Description
+            %p{align: "center"}
+              %a.btn.btn-primary.btn-block{href: "http://bootsnipp.com/"} Open
+      %li.span4
+        .thumbnail
+          %img{alt: "ALT NAME", src: "http://placehold.it/320x200"}/
+          .caption
+            %h3 Header Name
+            %p Description
+            %p{align: "center"}
+              %a.btn.btn-primary.btn-block{href: "http://bootsnipp.com/"} Open
+      %li.span4
+        .thumbnail
+          %img{alt: "ALT NAME", src: "http://placehold.it/320x200"}/
+          .caption
+            %h3 Header Name
+            %p Description
+            %p{align: "center"}
+              %a.btn.btn-primary.btn-block{href: "http://bootsnipp.com/"} Open
+      %li.span4
+        .thumbnail
+          %img{alt: "ALT NAME", src: "http://placehold.it/320x200"}/
+          .caption
+            %h3 Header Name
+            %p Description
+            %p{align: "center"}
+              %a.btn.btn-primary.btn-block{href: "http://bootsnipp.com/"} Open
+      %li.span4
+        .thumbnail
+          %img{alt: "ALT NAME", src: "http://placehold.it/320x200"}/
+          .caption
+            %h3 Header Name
+            %p Description
+            %p{align: "center"}
+              %a.btn.btn-primary.btn-block{href: "http://bootsnipp.com/"} Open
+      %li.span4
+        .thumbnail
+          %img{alt: "ALT NAME", src: "http://placehold.it/320x200"}/
+          .caption
+            %h3 Header Name
+            %p Description
+            %p{align: "center"}
+              %a.btn.btn-primary.btn-block{href: "http://bootsnipp.com/"} Open
+
   .footer
-    %p © Company 2013
-/
+    = link_to "© Faun and Phoenix 2013", "http://faun-and-phoenix.herokuapp.com"
+
+
+
