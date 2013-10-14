@@ -25,7 +25,7 @@
 
   .jumbotron
     %h2 Fancy Village food. Lazy-college-student convenience.
-    %p.lead   You order the food you want from the village. We bring it back for you.
+    %p.lead   You order the food you want from the village. We bring it back to you.
     #basic-modal
       %a.basic.btn.btn-large.btn-success{href:"#"} Order Now
     / %a.basic.btn.btn-large.btn-success{href: "#" } Order Now
@@ -50,55 +50,26 @@
             = f.submit
       .span8.offset-4
         %h1 Receipt area
+
+    %ul.nav.nav-tabs
+      %li.active
+        %a Eureka
+      %li
+        %a YogurtLand
+      %li 
+        %a Somewhere Else
     %ul.thumbnails
-      %li.span4
-        .thumbnail
-          %img{alt: "ALT NAME", src: "http://placehold.it/320x200"}/
-          .caption
-            %h3 Header Name
-            %p Description
-            %p{align: "center"}
-              %a.btn.btn-primary.btn-block{href: "http://bootsnipp.com/"} Open
-      %li.span4
-        .thumbnail
-          %img{alt: "ALT NAME", src: "http://placehold.it/320x200"}/
-          .caption
-            %h3 Header Name
-            %p Description
-            %p{align: "center"}
-              %a.btn.btn-primary.btn-block{href: "http://bootsnipp.com/"} Open
-      %li.span4
-        .thumbnail
-          %img{alt: "ALT NAME", src: "http://placehold.it/320x200"}/
-          .caption
-            %h3 Header Name
-            %p Description
-            %p{align: "center"}
-              %a.btn.btn-primary.btn-block{href: "http://bootsnipp.com/"} Open
-      %li.span4
-        .thumbnail
-          %img{alt: "ALT NAME", src: "http://placehold.it/320x200"}/
-          .caption
-            %h3 Header Name
-            %p Description
-            %p{align: "center"}
-              %a.btn.btn-primary.btn-block{href: "http://bootsnipp.com/"} Open
-      %li.span4
-        .thumbnail
-          %img{alt: "ALT NAME", src: "http://placehold.it/320x200"}/
-          .caption
-            %h3 Header Name
-            %p Description
-            %p{align: "center"}
-              %a.btn.btn-primary.btn-block{href: "http://bootsnipp.com/"} Open
-      %li.span4
-        .thumbnail
-          %img{alt: "ALT NAME", src: "http://placehold.it/320x200"}/
-          .caption
-            %h3 Header Name
-            %p Description
-            %p{align: "center"}
-              %a.btn.btn-primary.btn-block{href: "http://bootsnipp.com/"} Open
+      = render "menu_item"
+      = render "menu_item"
+      = render "menu_item"
+      = render "menu_item"
+      = render "menu_item"
+      = render "menu_item"
+      = render "menu_item"
+      = render "menu_item"
+      = render "menu_item"
+
+    
 
   .footer
     = link_to "© Faun and Phoenix 2013", "http://faun-and-phoenix.herokuapp.com"
