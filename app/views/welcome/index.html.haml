@@ -1,0 +1,42 @@
+/ 
+/ Note: Most of the styling has been done in application.html.haml;
+/ we are only rendering what we want in the body of our page!
+/ The only exception is that any overrides we want specific to any pages
+/ in the app/view/welcome folder also have the welcome.css.scss rules
+/ apply to them.
+/ 
+.container-narrow
+  .masthead
+    %ul.nav.nav-pills.pull-right
+      %li.active
+        %a{href: "#"} Home
+      %li
+        %a{href: "#"} About
+      %li
+        %a{href: "#"} Contact
+    %h3.muted Claremont Cravings
+  %hr/
+  .jumbotron
+    %h1 Claremont Cravings
+    %p.lead Fancy Village food. Lazy-college-student convenience.  You order the food you want from the village, and we bring it to you.
+    %a.btn.btn-large.btn-success{href: "#"} Order Now
+  %hr/
+  .row-fluid.marketing
+    .span6
+      %h4 Subheading
+      %p Donec id elit non mi porta gravida at eget metus. Maecenas faucibus mollis interdum.
+      %h4 Subheading
+      %p Morbi leo risus, porta ac consectetur ac, vestibulum at eros. Cras mattis consectetur purus sit amet fermentum.
+      %h4 Subheading
+      %p Maecenas sed diam eget risus varius blandit sit amet non magna.
+    .span6
+      %h4 Subheading
+      %p Donec id elit non mi porta gravida at eget metus. Maecenas faucibus mollis interdum.
+      %h4 Subheading
+      %p Morbi leo risus, porta ac consectetur ac, vestibulum at eros. Cras mattis consectetur purus sit amet fermentum.
+      %h4 Subheading
+      %p Maecenas sed diam eget risus varius blandit sit amet non magna.
+  %hr/
+  .footer
+    %p © Company 2013
+/

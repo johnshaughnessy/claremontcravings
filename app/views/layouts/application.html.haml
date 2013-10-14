@@ -1,0 +1,31 @@
+!!!
+%html
+  %head
+    %title Claremont Cravings
+
+    / Here is the style sheet that links to app/assets/stylesheets/application.css.scss
+    = stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true 
+
+
+    / Here is the style sheet that links to app/assets/stylesheets/slate.min.css, 
+    / which I took as a free bootstrap theme online.
+    = stylesheet_link_tag    "slate.min", media: "all", "data-turbolinks-track" => true
+
+    / This tag is linked to app/assets/javascripts/application.js, 
+    / which has the bootstrap javascript linked in the line that says
+    / "//= require bootstrap"
+    = javascript_include_tag "application", "data-turbolinks-track" => true 
+
+    / I don't know what this does yet.
+    = csrf_meta_tags 
+
+    / Note: Our bootstrap stylesheets work because of the ruby gem "bootstrap-rails" 
+    / that we import in our gemfile
+
+  %body
+
+    / Here we use "yeild" to mean render the specific page.  application.html.haml will
+    / determine the header in every case and what we put in index.html.haml (for example)
+    / will be what replaces the keyword "yield" when we visit welcome/index which we've 
+    / set as our root in the routes.rb file.
+    = yield
