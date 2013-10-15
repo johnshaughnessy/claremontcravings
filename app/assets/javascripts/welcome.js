@@ -53,30 +53,36 @@ $(document).ready(function(){
     // This should be done another way so that one function 
     // works for any + / - button.
     $("#"+food_id+"-increase").on("click", function(){
-      alert("this has been called");
+      new_receipt_entry = new_receipt_entry + "<tr class="+ new_receipt_entry_color +">";
+        new_receipt_entry = new_receipt_entry +   "<td>" + food + "</td>";
+        new_receipt_entry = new_receipt_entry +   "<td>" + price + "</td>";
+        new_receipt_entry = new_receipt_entry +   "<td> 1 </td>";
+        new_receipt_entry = new_receipt_entry +   "<td>" + price + "</td>";
+        new_receipt_entry = new_receipt_entry + "</tr>"
+        $("#receipt").append(new_receipt_entry);
     });
   });
 
-  $("div").on("click", "a.increase-food",function(){
-    alert("hello");
-    // $(this).unbind("click");
-    // These will help us throughout, so we might as well grab them as vars.
-    var food = $(this).attr("food");
-    var price = $(this).attr("price");
-    var food_id = $(this).attr("id");
+  // $("div").on("click", "a.increase-food",function(){
+  //   alert("hello");
+  //   // $(this).unbind("click");
+  //   // These will help us throughout, so we might as well grab them as vars.
+  //   var food = $(this).attr("food");
+  //   var price = $(this).attr("price");
+  //   var food_id = $(this).attr("id");
 
-    // Add the item to the receipt
-    var item_count = $("#receipt tr").length;
-    var new_receipt_entry_color = (new Array('error', 'info', 'warning','success' ))[item_count%4];
-    var new_receipt_entry = "";
-    new_receipt_entry = new_receipt_entry + "<tr class="+ new_receipt_entry_color +">";
-    new_receipt_entry = new_receipt_entry +   "<td>" + food + "</td>";
-    new_receipt_entry = new_receipt_entry +   "<td>" + price + "</td>";
-    new_receipt_entry = new_receipt_entry +   "<td> 1 </td>";
-    new_receipt_entry = new_receipt_entry +   "<td>" + price + "</td>";
-    new_receipt_entry = new_receipt_entry + "</tr>"
-    $("#receipt").append(new_receipt_entry);
-  });
+  //   // Add the item to the receipt
+  //   var item_count = $("#receipt tr").length;
+  //   var new_receipt_entry_color = (new Array('error', 'info', 'warning','success' ))[item_count%4];
+  //   var new_receipt_entry = "";
+  //   new_receipt_entry = new_receipt_entry + "<tr class="+ new_receipt_entry_color +">";
+  //   new_receipt_entry = new_receipt_entry +   "<td>" + food + "</td>";
+  //   new_receipt_entry = new_receipt_entry +   "<td>" + price + "</td>";
+  //   new_receipt_entry = new_receipt_entry +   "<td> 1 </td>";
+  //   new_receipt_entry = new_receipt_entry +   "<td>" + price + "</td>";
+  //   new_receipt_entry = new_receipt_entry + "</tr>"
+  //   $("#receipt").append(new_receipt_entry);
+  // });
 
   
 
