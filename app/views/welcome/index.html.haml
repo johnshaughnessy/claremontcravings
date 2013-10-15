@@ -6,7 +6,8 @@
 / apply to them.
 / 
 
-= javascript_include_tag "simplemodal", "data-turbolinks-track" => true 
+/ simplemodal.js is used to pop open the menu
+/= javascript_include_tag "simplemodal", "data-turbolinks-track" => true 
 
 .container-narrow
   
@@ -19,57 +20,79 @@
         %a{href: "#"} About
       %li
         %a{href: "#"} Contact
-    %h3.muted Claremont Cravings
+    %h1.muted Claremont Cravings
   %hr/
 
-
+  / Jumpotron with call-to-action.
   .jumbotron
-    %h2 Fancy Village food. Lazy-college-student convenience.
-    %p.lead   You order the food you want from the village. We bring it back to you.
-    #basic-modal
-      %a.basic.btn.btn-large.btn-success{href:"#"} Order Now
-    / %a.basic.btn.btn-large.btn-success{href: "#" } Order Now
+    %h2 
+      Fancy Village Food. 
+      %br
+      College-Student Convenience.
+    %p.lead   Order the food you want from the village and we'll bring it to you.
+
+    / The basic class is necessary for the javascript to open the menu.
+    %a.btn.btn-large.btn-success{"data-toggle" => "modal", href: "#menuModal", role: "button"} Order Now
   %hr/
 
-  / modal content
-  #basic-modal-content
-    .row-fluid.center
-      .span4
-        = form_for :order, url: orders_path do |f|
-          %p
-            = f.label "name (first, last)"
-            %br
-            = f.text_field :full_name
-         
-          %p
-            = f.label :food
-            %br
-            = f.text_area :food
-         
-          %p
-            = f.submit
-      .span8.offset-4
-        %h1 Receipt area
+  #menuModal.modal.hide.fade
+    .modal-header
+      %button.close{"aria-hidden" => "true", "data-dismiss" => "modal", type: "button"} ×
+      %h3 Your Order
+    .modal-body
+      = form_for :order, url: orders_path do |f|
+        / Top part of the menu needs name / delivery location / receipt summary
+        .row-fluid.center
 
-    %ul.nav.nav-tabs
-      %li.active
-        %a Eureka
-      %li
-        %a YogurtLand
-      %li 
-        %a Somewhere Else
-    %ul.thumbnails
-      = render "menu_item"
-      = render "menu_item"
-      = render "menu_item"
-      = render "menu_item"
-      = render "menu_item"
-      = render "menu_item"
-      = render "menu_item"
-      = render "menu_item"
-      = render "menu_item"
+          / Name and deliver location
+          .span4
+            %p
+              = f.label "name (first, last)"
+              %br
+              = f.text_field :full_name
+            %label.radio-inline
+              %input#inlineCheckbox1{type: "radio", name:"delivery", value: "option1"}/
+              South Quad (6:00PM)
+            %label.radio-inline
+              %input#inlineCheckbox2{type: "radio", name:"delivery", value: "option2"}/
+              North Quad (6:30PM)
+            %label.radio-inline
+              %input#inlineCheckbox3{type: "radio", name:"delivery", value: "option3"}/
+              Apartments (7:00PM)
 
-    
+            %p
+              = f.label :delivery_location
+              %br
+              = f.text_area :food
+            
+          .span8.offset-4
+            %h1 Receipt area
+            %p
+              = f.submit
+
+            
+        / The tab bar for the restaurants
+        %ul.nav.nav-tabs
+          - i = 0
+          - @restaurants.each do |restaurant|
+            %li{class:("active" if i==0)}
+              %a{href:"##{restaurant.name}_tab-pane", "data-toggle"=>"tab"}
+                =restaurant.name
+            -i = i+1
+
+  
+        .tab-content
+          - i = 0
+          - @restaurants.each do |restaurant|
+            %ul.thumbnails.tab-pane{:id => "#{restaurant.name}_tab-pane", :class => ("active" if i==0)}
+              - restaurant.foods.each do |food|
+                = render "menu_item", :food => food
+              - i = i+1
+
+
+    .modal-footer
+      %a.btn{href: "#"} Close
+      / %a.btn.btn-primary{href: "#"} Save changes
 
   .footer
     = link_to "© Faun and Phoenix 2013", "http://faun-and-phoenix.herokuapp.com"

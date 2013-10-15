@@ -38,17 +38,23 @@ body {
   margin-top: 28px;
 }
 
-// Playing with modals
-#basic-modal-content {
-}
-
-#simplemodal-container {
-  left:0px;
-  width:90%;
+body .modal {
+  width: 90%; /* desired relative width */
+  left: 5%; /* (100%-width)/2 */
+  bottom: 5%;
+  /* place center */
+  margin-left:auto;
+  margin-right:auto;
   height:90%;
+
+  overflow-y:auto; 
 }
 
-.center {
-  text-align:center;
+.modal-body {
+  max-height:90%;
 }
+
+.modal.fade.in {
+    top: 5%;
+  }
 

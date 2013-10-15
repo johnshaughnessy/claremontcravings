@@ -7,6 +7,9 @@ gem 'rails', '4.0.0'
 # More on this here: https://devcenter.heroku.com/articles/sqlite3
 gem 'pg', "~> 0.17.0"
 
+# For nicer output in the console
+gem 'awesome_print'
+
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 4.0.0'
 

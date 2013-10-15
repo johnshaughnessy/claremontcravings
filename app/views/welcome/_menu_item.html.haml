@@ -1,8 +1,10 @@
 %li.span4
   .thumbnail
-    %img{alt: "ALT NAME", src: "http://placehold.it/320x200"}/
+    =image_tag("#{food.name.downcase}.jpg", alt: "#{food.name}")
     .caption
-      %h3 Header Name
-      %p Description
+      %h3 
+        =food.name
+      %p
+        ="$#{food.price / 100}.#{'%02d' % (food.price % 100)}"
       %p{align: "center"}
-        %a.btn.btn-primary.btn-block{href: "http://bootsnipp.com/"} Open
+        %a.btn.btn-primary.btn-block{href: "#"} Add to Order
