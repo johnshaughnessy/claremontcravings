@@ -6,20 +6,6 @@
 / apply to them.
 / 
 
-:javascript
-  $(document).ready(function(){
-    $(".add-food").click(function(){
-      var food = $(this).attr("food");
-      $("#receipt").append( "<li>" + food + "</li>");
-      
-      $(this).text("Added to Order!");
-      $(this).removeClass("btn-primary").addClass("btn-success");
-
-    });
-
-
-  });
-
 
 
 .container-narrow
@@ -72,15 +58,19 @@
             %label.radio-inline
               %input#inlineCheckbox3{type: "radio", name:"delivery", value: "option3"}/
               Apartments (7:00PM)
-
-            %p
-              = f.label :delivery_location
-              %br
-              = f.text_area :food
             
           .span8.offset-4
-            %h1 Receipt area
-            %ul#receipt
+            %h1 Receipt
+            %table.table
+              %thead
+                %tr
+                  %th Food
+                  %th Price
+                  %th Quantity
+                  %th Total
+              %tbody#receipt
+                
+
 
             %p
               = f.submit
