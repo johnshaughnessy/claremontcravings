@@ -10,7 +10,7 @@
   Restaurant.find_or_create_by_name(restaurant)
 end
 
-[["The Original", 1375],["Napa Burger", 1475], ["Truffle Fries", 9]].each do |food,price|
+[["The Original", 1375],["Napa Burger", 1475], ["Truffle Fries", 900]].each do |food,price|
   Restaurant.find_by_name("Eureka").foods.find_or_create_by_name_and_price(food, price)
 end
 

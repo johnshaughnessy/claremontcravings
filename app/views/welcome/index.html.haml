@@ -6,8 +6,21 @@
 / apply to them.
 / 
 
-/ simplemodal.js is used to pop open the menu
-/= javascript_include_tag "simplemodal", "data-turbolinks-track" => true 
+:javascript
+  $(document).ready(function(){
+    $(".add-food").click(function(){
+      var food = $(this).attr("food");
+      $("#receipt").append( "<li>" + food + "</li>");
+      
+      $(this).text("Added to Order!");
+      $(this).removeClass("btn-primary").addClass("btn-success");
+
+    });
+
+
+  });
+
+
 
 .container-narrow
   
@@ -67,6 +80,8 @@
             
           .span8.offset-4
             %h1 Receipt area
+            %ul#receipt
+
             %p
               = f.submit
 
