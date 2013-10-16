@@ -6,5 +6,5 @@
         =food.name
       %p
         ="$#{food.price / 100}.#{'%02d' % (food.price % 100)}"
-      .row
+      .row{id:"#{food.name.downcase.delete(' ') + '-row'}"}
         %a.add-food.btn.btn-primary.btn-block{food:"#{food.name}", price:"#{food.price}", id:"#{food.name.downcase.delete(' ')}"} Add to Order

@@ -1,0 +1,28 @@
+/ Menu modal
+
+#menuModal.modal.hide.fade
+  / The header is mostly useful for the "x" that closes it.
+  .modal-header
+    %button.close{"aria-hidden" => "true", "data-dismiss" => "modal", type: "button"} ×
+    %h3 Your Order
+
+
+  .modal-body
+    / TODO: I don't know if this is a great place to begin the form.
+    = form_for :order, url: orders_path do |f|
+      - @form = f
+      .row-fluid.center
+        / Name and deliver location
+        = render "menu_info"
+        = render "menu_receipt"
+
+        %p
+          = @form.submit
+
+          
+      = render "menu_content"
+
+
+  .modal-footer
+    %a.btn{href: "#"} Close
+    / %a.btn.btn-primary{href: "#"} Save changes

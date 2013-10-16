@@ -1,0 +1,17 @@
+/ The tab bar for the restaurants
+%ul.nav.nav-tabs
+  - i = 0
+  - @restaurants.each do |restaurant|
+    %li{class:("active" if i==0)}
+      %a{href:"##{html_escape(restaurant.name)}_tab-pane", "data-toggle"=>"tab"}
+        =restaurant.name
+    -i = i+1
+
+
+.tab-content
+  - i = 0
+  - @restaurants.each do |restaurant|
+    %ul.thumbnails.tab-pane{:id => "#{html_escape(restaurant.name)}_tab-pane", :class => ("active" if i==0)}
+      - restaurant.foods.each do |food|
+        = render "menu_item", :food => food
+      - i = i+1

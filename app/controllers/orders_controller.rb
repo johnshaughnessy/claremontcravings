@@ -3,10 +3,11 @@ class OrdersController < ApplicationController
   end
 
   def create
-    @order = Order.new(name: params[:order][:name])
+    # @order = Order.new(name: params[:order][:name])
+    render :text => params.inspect 
 
-    @order.save
-    redirect_to @order
+    # @order.save
+    # redirect_to @order
   end
 
   def show

@@ -30,74 +30,12 @@
       College-Student Convenience.
     %p.lead   Order the food you want from the village and we'll bring it to you.
 
-    / The basic class is necessary for the javascript to open the menu.
+    / Note: The menuModal id is found in the menu_modal which we render as a partial.
     %a.btn.btn-large.btn-success{"data-toggle" => "modal", href: "#menuModal", role: "button"} Order Now
   %hr/
 
-  #menuModal.modal.hide.fade
-    .modal-header
-      %button.close{"aria-hidden" => "true", "data-dismiss" => "modal", type: "button"} ×
-      %h3 Your Order
-    .modal-body
-      = form_for :order, url: orders_path do |f|
-        / Top part of the menu needs name / delivery location / receipt summary
-        .row-fluid.center
-
-          / Name and deliver location
-          .span4
-            %p
-              = f.label "name (first, last)"
-              %br
-              = f.text_field :full_name
-            %label.radio-inline
-              %input#inlineCheckbox1{type: "radio", name:"delivery", value: "option1"}/
-              South Quad (6:00PM)
-            %label.radio-inline
-              %input#inlineCheckbox2{type: "radio", name:"delivery", value: "option2"}/
-              North Quad (6:30PM)
-            %label.radio-inline
-              %input#inlineCheckbox3{type: "radio", name:"delivery", value: "option3"}/
-              Apartments (7:00PM)
-            
-          .span8.offset-4
-            %h1 Receipt
-            %table.table
-              %thead
-                %tr
-                  %th Food
-                  %th Price
-                  %th Quantity
-                  %th Total
-              %tbody#receipt
-                
-
-
-            %p
-              = f.submit
-
-            
-        / The tab bar for the restaurants
-        %ul.nav.nav-tabs
-          - i = 0
-          - @restaurants.each do |restaurant|
-            %li{class:("active" if i==0)}
-              %a{href:"##{html_escape(restaurant.name)}_tab-pane", "data-toggle"=>"tab"}
-                =restaurant.name
-            -i = i+1
-
-  
-        .tab-content
-          - i = 0
-          - @restaurants.each do |restaurant|
-            %ul.thumbnails.tab-pane{:id => "#{html_escape(restaurant.name)}_tab-pane", :class => ("active" if i==0)}
-              - restaurant.foods.each do |food|
-                = render "menu_item", :food => food
-              - i = i+1
-
-
-    .modal-footer
-      %a.btn{href: "#"} Close
-      / %a.btn.btn-primary{href: "#"} Save changes
+  / This is what pops up when you click the button in the jumbotron.
+  = render "menu_modal", :restaurants => @restaurants
 
   .footer
     = link_to "© Faun and Phoenix 2013", "http://faun-and-phoenix.herokuapp.com"
