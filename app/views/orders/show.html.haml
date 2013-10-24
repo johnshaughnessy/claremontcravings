@@ -1,3 +1,23 @@
+%h3 Order Summary
+
 %p
   %strong Name:
   = @order.name
+%p
+  %strong Deliver To:
+  = @order.delivery_location
+
+- dict = {}
+- @order.foods.each do |food|
+  - if dict[food]
+    - dict[food] = dict[food] + 1
+  - else 
+    - dict[food] = 1
+
+%h4 Items : 
+
+- dict.keys.each do |key|
+  %p 
+    = key.name
+    =":"
+    = dict[key]

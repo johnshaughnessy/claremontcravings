@@ -13,5 +13,6 @@
   - @restaurants.each do |restaurant|
     %ul.thumbnails.tab-pane{:id => "#{html_escape(restaurant.name)}_tab-pane", :class => ("active" if i==0)}
       - restaurant.foods.each do |food|
-        = render "menu_item", :food => food
+        %li.span4
+          = render "menu_item", :food => food
       - i = i+1

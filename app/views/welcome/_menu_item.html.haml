@@ -1,10 +1,20 @@
-%li.span4
-  .thumbnail
-    =image_tag("cheeseburger.jpg", alt: "#{food.name}")
-    .caption
-      %h3
-        =food.name
-      %p
-        ="$#{food.price / 100}.#{'%02d' % (food.price % 100)}"
-      .row{id:"#{food.name.downcase.delete(' ') + '-row'}"}
-        %a.add-food.btn.btn-primary.btn-block{food:"#{food.name}", price:"#{food.price}", id:"#{food.name.downcase.delete(' ')}"} Add to Order
+.thumbnail
+  / Link the image by the name of the food. 
+  =image_tag("cheeseburger.jpg", alt: "#{food.name}")
+  .caption
+    / Display the name of the food
+    %h3
+      =food.name
+    / Display the price of the food
+    %p
+      ="$#{food.price / 100}.#{'%02d' % (food.price % 100)}"
+
+    / A MenuItemRow contains either an "Add to Order" button
+    / or buttons that allow you to manipulate the quantity.
+    .row.MenuItemRow
+      / The row starts with an addToOrder button
+      .addToOrder
+        / Here the button will be used to send the receipt
+        / the name of the food and its price.
+        / The "addToOrder" class will be used
+        %a.btn.btn-primary.btn-block{food:"#{food.name}", price:"#{food.price}"} Add to Order
